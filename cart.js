@@ -27,7 +27,14 @@ let shopStore = [
         disc:"Good condition (Full trade-in value) Device turns on and screen works normally",
         image:"image/samsung-s21.png"
     },
-    
+
+    {
+        id:"srsttyt",
+        name:"amsungs23",
+        price: 2000,
+        disc:"Good condition (Full trade-in value) Device turns on and screen works normally",
+        image:"image/samsung-s21.png"
+    }
 ];
 let cartBasket=JSON.parse(localStorage.getItem("add")) || [];
 
@@ -82,9 +89,13 @@ let decrease=(id)=>{
 else{
     search.item -= 1;
 }
-localStorage.setItem("add", JSON.stringify(cartBasket));
-//console.log(cartBasket);  
 update(selerectItem.id);
+cartBasket = cartBasket.filter((x)=>x.item !== 0);
+localStorage.setItem("add", JSON.stringify(cartBasket));
+update(selerectItem.id);
+cartBasket = cartBasket.filter((x)=>x.item !== 0);
+//console.log(cartBasket);  
+
 };
 let update=(id)=>{
     let search = cartBasket.find((x)=>x.id === id);
